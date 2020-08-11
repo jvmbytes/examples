@@ -64,7 +64,7 @@ public class App {
         };
 
         List<Filter> serviceFilter =
-                new FilterBuilder().onClass("com.jbytes.spy.com.jbytes.spy.example.service.*").onAnyBehavior().build();
+                new FilterBuilder().onClass("com.jbytes.spy.example.service.*").onAnyBehavior().build();
         Matcher matcher = FilterMatcher.toAndGroupMatcher(serviceFilter);
         EventType[] events = new EventType[]{EventType.BEFORE};
 
