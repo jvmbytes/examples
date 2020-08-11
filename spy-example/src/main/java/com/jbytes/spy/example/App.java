@@ -51,7 +51,7 @@ public class App {
         logger.info("user: {}", userService.getUser("wongoo"));
     }
 
-    private static void injectDirectly() {
+    private static void injectDirectly() throws Exception {
         LogTransformer logTransformer = new LogTransformer();
         InstLoader.loadInst().addTransformer(logTransformer, true);
 
