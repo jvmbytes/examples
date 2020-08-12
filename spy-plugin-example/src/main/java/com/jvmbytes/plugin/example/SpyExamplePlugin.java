@@ -22,14 +22,24 @@ import java.util.List;
 public class SpyExamplePlugin implements SpyPlugin {
     private static final Logger logger = LoggerFactory.getLogger(SpyExamplePlugin.class);
 
+    @Override
     public String getName() {
         return "spy-example-plugin";
     }
 
+    @Override
     public String getNamespace() {
         return "default";
     }
 
+    @Override
+    public String[] getParentPackagePrefixes() {
+        return new String[]{
+                "com.jbytes."
+        };
+    }
+
+    @Override
     public Matcher getMatcher() {
         List<Filter> serviceFilter = new FilterBuilder()
                 .onClass("com.jbytes.spy.example.service.*")
@@ -39,11 +49,13 @@ public class SpyExamplePlugin implements SpyPlugin {
         return matcher;
     }
 
+    @Override
     public EventType[] getEventTypes() {
         EventType[] events = new EventType[]{EventType.BEFORE};
         return events;
     }
 
+    @Override
     public EventListener getEventListener() {
         EventListener eventListener = new EventListener() {
             public void onEvent(Event event) throws Throwable {
